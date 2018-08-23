@@ -11,10 +11,15 @@ class SearchBar extends Component {
 	render() {
 		//whenever using JS variables in JSX - we wrap them in curly brackets
 		return (
-			<div>
-				<input value={this.state.term} onChange={e => this.setState({ term: e.target.value })} />
+			<div className="search-bar">
+				<input value={this.state.term} onChange={event => this.onInputChange(event.target.value)} />
 			</div>
 		);
+	}
+
+	onInputChange(term) {
+		this.setState({ term });
+		this.props.onSearchTermChange(term);
 	}
 }
 
